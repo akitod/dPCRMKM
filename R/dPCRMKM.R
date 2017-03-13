@@ -23,7 +23,7 @@
 #' 
 #' @description Digital PCR quality control program. You can use only xml datas derived from the QuantStudio 3D Digital PCR instrument. Please insert the xml datas in the same folder and execute this program on the folder.
 #' @author Akito Dobashi dobashi-jik@umin.ac.jp
-#' @param quality_filter quality threshold
+#' @param quality_filter quality threshold (default : 0.6)
 #' @export
 
 dPCRQC <- function(quality_filter){
@@ -116,7 +116,7 @@ dPCRQC <- function(quality_filter){
 #' 
 #' @description Digital PCR mutation calculation program by modified k-means clustering algorithm. You can use only xml datas derived from the QuantStudio 3D Digital PCR instrument. Please insert the xml datas in the same folder and execute this program on the folder. In order to automatically change the setting value, I recommend execute after the dPCRQC program.
 #' @author Akito Dobashi dobashi-jik@umin.ac.jp
-#' @param quality_filter quality threshold
+#' @param quality_filter quality threshold (default : 0.6)
 #' @export
 
 dPCRKM <- function(quality_filter){
