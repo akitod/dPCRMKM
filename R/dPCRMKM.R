@@ -27,6 +27,9 @@
 #' @export
 
 dPCRQC <- function(quality_filter){
+  if (is.na(quality_filter)){
+    quality_filter <- 0.6
+  }
   xmlfile <- dir()
   cnt <- grep(".xml", xmlfile)
   V1 <- NULL
@@ -120,6 +123,9 @@ dPCRQC <- function(quality_filter){
 #' @export
 
 dPCRKM <- function(quality_filter){
+  if (is.na(quality_filter)){
+    quality_filter <- 0.6
+  }
   distance <- 1000
   FAM_BORDER <- 1000
   VIC_BORDER <- 1000
