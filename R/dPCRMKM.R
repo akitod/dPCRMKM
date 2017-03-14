@@ -1,4 +1,4 @@
-#'dPCRQC: Digital PCR quality control program
+#'dPCRQC: Digital PCR Quality Control Program
 #' @importFrom XML xmlParse
 #' @importFrom XML getNodeSet
 #' @importFrom XML xmlGetAttr
@@ -21,10 +21,7 @@
 #' @importFrom utils read.table
 #' @importFrom utils write.table
 #' 
-#' @description Digital PCR quality control program. You can use only xml datas derived from the QuantStudio 3D Digital PCR instrument. Please insert the xml datas in the same folder and execute this program on the folder.
-#' @author Akito Dobashi dobashi-jik@umin.ac.jp
 #' @param quality_filter quality threshold (default : 0.6)
-#' @export
 
 dPCRQC <- function(quality_filter){
   if (missing(quality_filter)){
@@ -94,7 +91,7 @@ dPCRQC <- function(quality_filter){
   write.table(data_g, "dPCR_KM.ini", sep = "\t", append = F, quote = F, row.names = F, col.names = F)
 }
 
-#'dPCRKM: Digital PCR mutation calculation program
+#'dPCRMKM: Digital PCR Mutation Calculation Program
 #' @importFrom XML xmlParse
 #' @importFrom XML getNodeSet
 #' @importFrom XML xmlGetAttr
@@ -117,14 +114,29 @@ dPCRQC <- function(quality_filter){
 #' @importFrom utils read.table
 #' @importFrom utils write.table
 #' 
-#' @description Digital PCR mutation calculation program by modified k-means clustering algorithm. You can use only xml datas derived from the QuantStudio 3D Digital PCR instrument. Please insert the xml datas in the same folder and execute this program on the folder. In order to automatically change the setting value, I recommend execute after the dPCRQC program.
+#' @description Digital PCR mutation calculation program by modified k-means clustering algorithm. You can use only XML data derived from the Applied Biosystems QuantStudio 3D Digital PCR instrument. Execute this package with your XML data in the folder (default : ./). First, quality control program is run, adjusting the setting value automatically. If you are setting value manually, please write your favorite value in ini file.
 #' @author Akito Dobashi dobashi-jik@umin.ac.jp
-#' @param quality_filter quality threshold (default : 0.6)
+#' @param QC quality control (Y/N) (default : Y)
+#' @param QF quality threshold (Int) (default : 0.6)
+#' @param FD execute folder (default : "./")
+#' @examples dPCRMKM(QC = "Y", QF = 0.6, FD = "/usr/xml/data/")
 #' @export
 
-dPCRKM <- function(quality_filter){
-  if (missing(quality_filter)){
+dPCRMKM <- function(QC,QF,FD){
+  if (missing(FD)){
+  } else {
+    setwd(FD)
+  }
+  if (missing(QF)){
     quality_filter <- 0.6
+  } else {
+    quality_filter <- QF
+  }
+  if (missing(QC)){
+    dPCRQC(quality_filter)
+  } else if (QC == "N") {
+  } else {
+    dPCRQC(quality_filter)
   }
   distance <- 1000
   FAM_BORDER <- 1000

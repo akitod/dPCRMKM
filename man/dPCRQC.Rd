@@ -2,7 +2,7 @@
 % Please edit documentation in R/dPCRMKM.R
 \name{dPCRQC}
 \alias{dPCRQC}
-\title{dPCRQC: Digital PCR quality control program}
+\title{dPCRQC: Digital PCR Quality Control Program}
 \usage{
 dPCRQC(quality_filter)
 }
@@ -10,8 +10,5 @@ dPCRQC(quality_filter)
 \item{quality_filter}{quality threshold (default : 0.6)}
 }
 \description{
-Digital PCR quality control program. You can use only xml datas derived from the QuantStudio 3D Digital PCR instrument. Please insert the xml datas in the same folder and execute this program on the folder.
-}
-\author{
-Akito Dobashi dobashi-jik@umin.ac.jp
+dPCRQC: Digital PCR Quality Control Program
 }
