@@ -27,7 +27,7 @@
 #' @export
 
 dPCRQC <- function(quality_filter){
-  if (is.na(quality_filter)){
+  if (missing(quality_filter)){
     quality_filter <- 0.6
   }
   xmlfile <- dir()
@@ -123,7 +123,7 @@ dPCRQC <- function(quality_filter){
 #' @export
 
 dPCRKM <- function(quality_filter){
-  if (is.na(quality_filter)){
+  if (missing(quality_filter)){
     quality_filter <- 0.6
   }
   distance <- 1000
